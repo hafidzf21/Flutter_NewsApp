@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newsapp/pages/homepages.dart';
-import 'package:newsapp/pages/listkategori/list_pages/list_pages.dart';
+import 'package:newsapp/pages/listkategori/list_pages.dart';
 
 void main() {
   runApp(MyApp());

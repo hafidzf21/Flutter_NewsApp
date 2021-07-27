@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:newsapp/pages/listkategori/list_pages/detail_list.dart';
+import 'package:newsapp/pages/listkategori/detail_list.dart';
 
 class ListPages extends StatefulWidget {
   @override
