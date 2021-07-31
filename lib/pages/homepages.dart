@@ -48,9 +48,9 @@ class _HomePageState extends State<HomePage> {
                 leading: Icon(Icons.event_note_rounded),
               ),
               ListTile(
-                onTap: () {},
-                title: Text('Kamu Sukai'),
-                leading: Icon(Icons.bookmark),
+                onTap: () => Navigator.of(context).pushNamed('/lottie'),
+                title: Text('Kamu Pasti Suka'),
+                leading: Icon(Icons.favorite),
               ),
               Divider(),
               Padding(

@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.NewsApp">
    <application
-        android:label="NewsApp"
-        android:icon="@mipmap/ic_launcher">
+        android:label="Breaking News"
+        android:icon="@mipmap/launcher_json">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

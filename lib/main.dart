@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:newsapp/pages/homepages.dart';
-import 'package:newsapp/pages/listkategori/list_pages.dart';
+import 'package:newsapp/pages/menu/list_pages.dart';
+import 'package:newsapp/pages/menu/lottie.dart';
+import 'package:newsapp/pages/splashScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,8 +13,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: {
-        '/' : (BuildContext _) => HomePage(),
+        '/' : (BuildContext _) => SplashScreen(),
         '/kategori' : (BuildContext _) => ListPages(),
+        '/lottie' : (BuildContext _) => LottiePages(),
       },
       initialRoute: '/',
     );
