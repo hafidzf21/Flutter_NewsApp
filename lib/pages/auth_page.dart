@@ -47,19 +47,6 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
-  // Future<String> _authUser(LoginData data) {
-  //   print('Name: ${data.name}, Password: ${data.password}');
-  //   return Future.delayed(loginTime).then((_) {
-  //     if (!users.containsKey(data.name)) {
-  //       return 'Username not exists';
-  //     }
-  //     if (users[data.name] != data.password) {
-  //       return 'Password does not match';
-  //     }
-  //     return null;
-  //   });
-  // }
-
   Future<String> _recoverPassword(String name) {
     print('Name: $name');
     return Future.delayed(loginTime).then((_) {

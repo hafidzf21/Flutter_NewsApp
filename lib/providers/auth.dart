@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class Auth with ChangeNotifier {
-  Future <void> signup(String email, String password) async {
+  Future<void> signup(String email, String password) async {
     Uri url = Uri.parse(
         "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCTvHb8ZJfzbjwXgvlno7IswS4qwcImJsw");
 
@@ -26,10 +26,9 @@ class Auth with ChangeNotifier {
     } catch (error) {
       throw error;
     }
-
   }
 
-  Future <void> login(String email, String password) async {
+  Future<void> login(String email, String password) async {
     Uri url = Uri.parse(
         "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCTvHb8ZJfzbjwXgvlno7IswS4qwcImJsw");
 
@@ -51,6 +50,5 @@ class Auth with ChangeNotifier {
     } catch (error) {
       throw error;
     }
-    
   }
 }

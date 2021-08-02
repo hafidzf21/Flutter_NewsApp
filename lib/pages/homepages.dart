@@ -3,6 +3,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:newsapp/components/customListTile.dart';
 import 'package:newsapp/main.dart';
 import 'package:newsapp/model/article_model.dart';
+import 'package:newsapp/pages/auth_page.dart';
 import 'package:newsapp/services/api_service.dart';
 
 class HomePage extends StatefulWidget {
@@ -59,9 +60,10 @@ class _HomePageState extends State<HomePage> {
                     style: TextStyle(fontSize: 14, color: Colors.black54)),
               ),
               ListTile(
-                onTap: () {},
-                title: Text('Akun'),
-                leading: Icon(Icons.account_box_rounded),
+                onTap: () => Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => LoginPage())),
+                title: Text('Logout'),
+                leading: Icon(Icons.logout),
               ),
               ListTile(
                 onTap: () {},
