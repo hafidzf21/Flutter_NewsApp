@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:newsapp/components/customListTile.dart';
-import 'package:newsapp/model/article_model.dart';
+import 'package:newsapp/models/article_model.dart';
 import 'package:newsapp/pages/auth_page.dart';
 import 'package:newsapp/providers/api_service.dart';
 
@@ -42,9 +42,9 @@ class _HomePageState extends State<HomePage> {
                 leading: Icon(Icons.sort),
               ),
               ListTile(
-                onTap: () {},
-                title: Text('Berita Terbaru'),
-                leading: Icon(Icons.event_note_rounded),
+                onTap: () => Navigator.of(context).pushNamed('/student'),
+                title: Text('Students'),
+                leading: Icon(Icons.school),
               ),
               ListTile(
                 onTap: () => Navigator.of(context).pushNamed('/lottie'),
@@ -101,6 +101,7 @@ class _HomePageState extends State<HomePage> {
               );
             },
           ),
-        ));
+        )
+        );
   }
 }

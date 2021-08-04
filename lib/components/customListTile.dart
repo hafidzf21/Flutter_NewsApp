@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:newsapp/model/article_model.dart';
+import 'package:newsapp/models/article_model.dart';
 import 'package:newsapp/pages/articles_details_page.dart';
 
 Widget customListTile(Article article, BuildContext context) {
@@ -42,7 +42,7 @@ Widget customListTile(Article article, BuildContext context) {
           Container(
             padding: EdgeInsets.all(6.0),
             decoration: BoxDecoration(
-              color: Colors.blue[400],
+              color: Colors.white12,
               borderRadius: BorderRadius.circular(30.0),
             ),
             child: Text(
