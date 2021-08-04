@@ -12,7 +12,6 @@ class _DetailListState extends State<DetailList> {
       appBar: AppBar(
         centerTitle: true,
         title: Text("Detail Kategori"),
-        backgroundColor: Colors.lightBlueAccent,
       ),
       body: Center(
         child: Text(

@@ -13,7 +13,6 @@ class _LottiePagesState extends State<LottiePages> {
       appBar: AppBar(
         centerTitle: true,
         title: Text("Lottie Animations"),
-        backgroundColor: Colors.black87,
       ),
       body: Container(
         child: Center(

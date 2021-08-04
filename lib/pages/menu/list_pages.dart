@@ -13,7 +13,6 @@ class _ListPagesState extends State<ListPages> {
       appBar: AppBar(
         centerTitle: true,
         title: Text("List Kategori"),
-        backgroundColor: Colors.lightBlueAccent,
       ),
       body: ListView(
         children: [
@@ -22,8 +21,7 @@ class _ListPagesState extends State<ListPages> {
               builder: (BuildContext _) => DetailList(),
             )),
             leading: CircleAvatar(
-              child: Icon(Icons.restaurant, color: Colors.lightBlue),
-              backgroundColor: Colors.lightBlueAccent.withOpacity(0.3),
+              child: Icon(Icons.restaurant),
             ),
             title: Text("Fast Food"),
           ),
@@ -32,8 +30,7 @@ class _ListPagesState extends State<ListPages> {
               builder: (BuildContext _) => DetailList(),
             )),
             leading: CircleAvatar(
-              child: Icon(Icons.two_wheeler, color: Colors.lightBlue),
-              backgroundColor: Colors.lightBlueAccent.withOpacity(0.3),
+              child: Icon(Icons.two_wheeler),
             ),
             title: Text("Otomotif"),
           ),
@@ -42,8 +39,7 @@ class _ListPagesState extends State<ListPages> {
               builder: (BuildContext _) => DetailList(),
             )),
             leading: CircleAvatar(
-              child: Icon(Icons.music_note, color: Colors.lightBlue),
-              backgroundColor: Colors.lightBlueAccent.withOpacity(0.3),
+              child: Icon(Icons.music_note)
             ),
             title: Text("Musik"),
           ),
@@ -52,8 +48,7 @@ class _ListPagesState extends State<ListPages> {
               builder: (BuildContext _) => DetailList(),
             )),
             leading: CircleAvatar(
-              child: Icon(Icons.theaters, color: Colors.lightBlue),
-              backgroundColor: Colors.lightBlueAccent.withOpacity(0.3),
+              child: Icon(Icons.theaters),
             ),
             title: Text("Film"),
           ),
@@ -62,8 +57,7 @@ class _ListPagesState extends State<ListPages> {
               builder: (BuildContext _) => DetailList(),
             )),
             leading: CircleAvatar(
-              child: Icon(Icons.sports_esports, color: Colors.lightBlue),
-              backgroundColor: Colors.lightBlueAccent.withOpacity(0.3),
+              child: Icon(Icons.sports_esports),
             ),
             title: Text("eSport"),
           ),
@@ -72,8 +66,7 @@ class _ListPagesState extends State<ListPages> {
               builder: (BuildContext _) => DetailList(),
             )),
             leading: CircleAvatar(
-              child: Icon(Icons.shopping_cart, color: Colors.lightBlue),
-              backgroundColor: Colors.lightBlueAccent.withOpacity(0.3),
+              child: Icon(Icons.shopping_cart),
             ),
             title: Text("Shopping"),
           ),
@@ -82,8 +75,7 @@ class _ListPagesState extends State<ListPages> {
               builder: (BuildContext _) => DetailList(),
             )),
             leading: CircleAvatar(
-              child: Icon(Icons.self_improvement, color: Colors.lightBlue),
-              backgroundColor: Colors.lightBlueAccent.withOpacity(0.3),
+              child: Icon(Icons.self_improvement),
             ),
             title: Text("Yoga"),
           ),
@@ -92,8 +84,7 @@ class _ListPagesState extends State<ListPages> {
               builder: (BuildContext _) => DetailList(),
             )),
             leading: CircleAvatar(
-              child: Icon(Icons.school, color: Colors.lightBlue),
-              backgroundColor: Colors.lightBlueAccent.withOpacity(0.3),
+              child: Icon(Icons.school),
             ),
             title: Text("Pendidikan"),
           ),
@@ -102,8 +93,7 @@ class _ListPagesState extends State<ListPages> {
               builder: (BuildContext _) => DetailList(),
             )),
             leading: CircleAvatar(
-              child: Icon(Icons.camera, color: Colors.lightBlue),
-              backgroundColor: Colors.lightBlueAccent.withOpacity(0.3),
+              child: Icon(Icons.camera),
             ),
             title: Text("Fotografi"),
           ),
@@ -112,8 +102,7 @@ class _ListPagesState extends State<ListPages> {
               builder: (BuildContext _) => DetailList(),
             )),
             leading: CircleAvatar(
-              child: Icon(Icons.medical_services, color: Colors.lightBlue),
-              backgroundColor: Colors.lightBlueAccent.withOpacity(0.3),
+              child: Icon(Icons.medical_services),
             ),
             title: Text("Kesehatan"),
           ),

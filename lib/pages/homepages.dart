@@ -20,17 +20,16 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           centerTitle: true,
           title: Text("Top Headlines"),
-          backgroundColor: Colors.lightBlueAccent,
         ),
         drawer: Drawer(
           child: ListView(
             children: [
               UserAccountsDrawerHeader(
-                currentAccountPicture: Icon(Icons.person),
+                currentAccountPicture: CircleAvatar(child: Icon(Icons.person)),
                 accountName: Text('Hafidz Fadhillah'),
                 accountEmail: Text('hafidzfadhillah606@gmail.com'),
                 decoration: BoxDecoration(
-                  color: Colors.lightBlueAccent,
+                  color: Colors.white30,
                 ),
               ),
               ListTile(
@@ -57,7 +56,7 @@ class _HomePageState extends State<HomePage> {
               Padding(
                 padding: const EdgeInsets.only(left: 18.0, bottom: 5.0),
                 child: Text('Labels',
-                    style: TextStyle(fontSize: 14, color: Colors.black54)),
+                    style: TextStyle(fontSize: 14, color: Colors.white)),
               ),
               ListTile(
                 onTap: () => Navigator.of(context).pushReplacement(

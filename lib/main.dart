@@ -20,6 +20,10 @@ class MyApp extends StatelessWidget {
     ],
     builder: (context, child) => MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        visualDensity: VisualDensity.comfortable,
+      ),
         routes: {
           '/' : (BuildContext _) => SplashScreen(),
           '/home' : (BuildContext _) => HomePage(),

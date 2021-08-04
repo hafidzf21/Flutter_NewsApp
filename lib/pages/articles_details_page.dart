@@ -12,7 +12,6 @@ class ArticlePage extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text("Detail News"),
-        backgroundColor: Colors.lightBlueAccent,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -35,7 +34,7 @@ class ArticlePage extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(6.0),
               decoration: BoxDecoration(
-                color: Colors.blue[400],
+                color: Colors.white10,
                 borderRadius: BorderRadius.circular(30.0),
               ),
               child: Text(
