@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:newsapp/components/customListTile.dart';
-import 'package:newsapp/main.dart';
 import 'package:newsapp/model/article_model.dart';
 import 'package:newsapp/pages/auth_page.dart';
-import 'package:newsapp/services/api_service.dart';
+import 'package:newsapp/providers/api_service.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -77,8 +76,8 @@ class _HomePageState extends State<HomePage> {
             Navigator.pushReplacement(
                 context,
                 PageRouteBuilder(
-                  pageBuilder: (a, b, c) => MyApp(),
-                  transitionDuration: Duration(seconds: 0),
+                  pageBuilder: (a, b, c) => HomePage(),
+                  transitionDuration: Duration(seconds: 3),
                 ));
             return;
           },

@@ -106,6 +106,15 @@ class _ListPagesState extends State<ListPages> {
             ),
             title: Text("Kesehatan"),
           ),
+             ListTile(
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (BuildContext _) => DetailList(),
+            )),
+            leading: CircleAvatar(
+              child: Icon(Icons.military_tech_outlined),
+            ),
+            title: Text("Militer"),
+          ),
         ],
       ),
     );

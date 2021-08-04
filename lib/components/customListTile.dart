@@ -19,7 +19,7 @@ Widget customListTile(Article article, BuildContext context) {
           borderRadius: BorderRadius.circular(12.0),
           boxShadow: [
             BoxShadow(
-              color: Colors.black26,
+              color: Colors.black,
               blurRadius: 3.0,
             ),
           ]),
@@ -42,7 +42,7 @@ Widget customListTile(Article article, BuildContext context) {
           Container(
             padding: EdgeInsets.all(6.0),
             decoration: BoxDecoration(
-              color: Colors.white10,
+              color: Colors.blue[400],
               borderRadius: BorderRadius.circular(30.0),
             ),
             child: Text(
