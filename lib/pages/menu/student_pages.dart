@@ -5,7 +5,22 @@ import '../../providers/student.dart';
 import './detail_menu/add_student_pages.dart';
 import './detail_menu/detail_student_pages.dart';
 
-class StudentPage extends StatelessWidget {
+class StudentPage extends StatefulWidget {
+  @override
+  _StudentPageState createState() => _StudentPageState();
+}
+
+class _StudentPageState extends State<StudentPage> {
+  bool isInit = true;
+  @override
+  void didChangeDependencies() {
+    if (isInit) {
+      Provider.of<Students>(context).initialData();
+    }
+    isInit = false;
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
     final allStudentsProvider = Provider.of<Students>(context);

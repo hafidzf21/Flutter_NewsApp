@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+
+import 'package:newsapp/providers/auth.dart';
+import 'package:newsapp/providers/student.dart';
+import 'package:provider/provider.dart';
+
 import 'package:newsapp/pages/homepages.dart';
 import 'package:newsapp/pages/menu/detail_menu/add_student_pages.dart';
 import 'package:newsapp/pages/menu/detail_menu/detail_student_pages.dart';
@@ -6,9 +11,6 @@ import 'package:newsapp/pages/menu/list_pages.dart';
 import 'package:newsapp/pages/menu/lottie.dart';
 import 'package:newsapp/pages/menu/student_pages.dart';
 import 'package:newsapp/pages/splashScreen.dart';
-import 'package:newsapp/providers/auth.dart';
-import 'package:newsapp/providers/student.dart';
-import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());

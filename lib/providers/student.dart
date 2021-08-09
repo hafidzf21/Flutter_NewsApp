@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 import 'package:newsapp/models/student_model.dart';
 
 class Students with ChangeNotifier {
@@ -47,11 +48,13 @@ class Students with ChangeNotifier {
     );
   }
 
-  Future <void> editStudent(String id, String name, String position, String image) {
+  Future<void> editStudent(
+      String id, String name, String position, String image) {
     Uri url = Uri.parse(
         "https://http-req-flutter-default-rtdb.firebaseio.com/students/$id.json");
     return http
-        .patch( // Jika menggunakan PUT maka data akan di replace dan createAt akan hilang didalam database
+        .patch(
+      // Jika menggunakan PUT maka data akan di replace dan createAt akan hilang didalam database
       url,
       body: json.encode(
         {
@@ -63,7 +66,8 @@ class Students with ChangeNotifier {
     )
         .then(
       (response) {
-        Student selectStudent = _allStudent.firstWhere((element) => element.id == id);
+        Student selectStudent =
+            _allStudent.firstWhere((element) => element.id == id);
         selectStudent.name = name;
         selectStudent.position = position;
         selectStudent.imageUrl = image;
@@ -82,5 +86,32 @@ class Students with ChangeNotifier {
         notifyListeners();
       },
     );
+  }
+
+  Future <void> initialData() async {
+    Uri url = Uri.parse(
+        "https://http-req-flutter-default-rtdb.firebaseio.com/students.json");
+
+    var getData = await http.get(url);
+
+    var dataResponse = json.decode(getData.body) as Map<String, dynamic>;
+
+    dataResponse.forEach(
+      (key, value) {
+        DateTime dateTimeParse =
+            DateFormat("yyyy-mm-dd hh:mm:ss").parse(value["createdAt"]);
+        _allStudent.add(
+          Student(
+            id: key,
+            createdAt: dateTimeParse,
+            imageUrl: value["imageUrl"],
+            name: value["name"],
+            position: value["position"],
+          ),
+        );
+      },
+    );
+    
+    notifyListeners();
   }
 }
