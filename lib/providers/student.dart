@@ -47,15 +47,29 @@ class Students with ChangeNotifier {
     );
   }
 
-  void editStudent(String id, String name, String position, String image,
-      BuildContext context) {
-    Student selectStudent =
-        _allStudent.firstWhere((element) => element.id == id);
-    selectStudent.name = name;
-    selectStudent.position = position;
-    selectStudent.imageUrl = image;
-
-    notifyListeners();
+  Future <void> editStudent(String id, String name, String position, String image) {
+    Uri url = Uri.parse(
+        "https://http-req-flutter-default-rtdb.firebaseio.com/students/$id.json");
+    return http
+        .patch( // Jika menggunakan PUT maka data akan di replace dan createAt akan hilang didalam database
+      url,
+      body: json.encode(
+        {
+          "name": name,
+          "position": position,
+          "imageUrl": image,
+        },
+      ),
+    )
+        .then(
+      (response) {
+        Student selectStudent = _allStudent.firstWhere((element) => element.id == id);
+        selectStudent.name = name;
+        selectStudent.position = position;
+        selectStudent.imageUrl = image;
+        notifyListeners();
+      },
+    );
   }
 
   Future<void> deleteStudent(String id) {

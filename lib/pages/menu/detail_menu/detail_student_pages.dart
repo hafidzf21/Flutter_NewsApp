@@ -11,13 +11,16 @@ class DetailStudent extends StatelessWidget {
     final students = Provider.of<Students>(context, listen: false);
     final studentId = ModalRoute.of(context).settings.arguments as String;
     final selectStudent = students.selectById(studentId);
-    
-    final TextEditingController imageController = TextEditingController(text: selectStudent.imageUrl);
-    final TextEditingController nameController = TextEditingController(text: selectStudent.name);
-    final TextEditingController positionController = TextEditingController(text: selectStudent.position);
+
+    final TextEditingController imageController =
+        TextEditingController(text: selectStudent.imageUrl);
+    final TextEditingController nameController =
+        TextEditingController(text: selectStudent.name);
+    final TextEditingController positionController =
+        TextEditingController(text: selectStudent.position);
     return Scaffold(
-        resizeToAvoidBottomInset: false,
-        appBar: AppBar(
+      resizeToAvoidBottomInset: false,
+      appBar: AppBar(
         centerTitle: true,
         title: Text("Detail Student"),
       ),
@@ -59,14 +62,24 @@ class DetailStudent extends StatelessWidget {
                 textInputAction: TextInputAction.done,
                 controller: imageController,
                 onEditingComplete: () {
-                  students.editStudent(
+                  students
+                      .editStudent(
                     studentId,
                     nameController.text,
                     positionController.text,
                     imageController.text,
-                    context,
+                  )
+                      .then(
+                    (value) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text("Berhasil Diubah!"),
+                          duration: Duration(seconds: 2),
+                        ),
+                      );
+                      Navigator.pop(context);
+                    },
                   );
-                  Navigator.pop(context);
                 },
               ),
               SizedBox(height: 50),
@@ -75,14 +88,24 @@ class DetailStudent extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 child: OutlinedButton(
                   onPressed: () {
-                    students.editStudent(
+                    students
+                        .editStudent(
                       studentId,
                       nameController.text,
                       positionController.text,
                       imageController.text,
-                      context,
+                    )
+                        .then(
+                      (value) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text("Berhasil Diubah!"),
+                            duration: Duration(seconds: 2),
+                          ),
+                        );
+                        Navigator.pop(context);
+                      },
                     );
-                    Navigator.pop(context);
                   },
                   child: Text(
                     "Edit",
