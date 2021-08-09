@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:newsapp/models/student_model.dart';
 
 class Students with ChangeNotifier {
@@ -11,19 +14,38 @@ class Students with ChangeNotifier {
   Student selectById(String id) =>
       _allStudent.firstWhere((element) => element.id == id);
 
-  void addStudent(
-      String name, String position, String image, BuildContext context) {
+  Future <void> addStudent(
+      String name, String position, String image) {
     DateTime dateTimeNow = DateTime.now();
-    _allStudent.add(
-      Student(
-        id: dateTimeNow.toString(),
-        name: name,
-        position: position,
-        imageUrl: image,
-        createdAt: dateTimeNow,
+
+    Uri url = Uri.parse(
+        "https://http-req-flutter-default-rtdb.firebaseio.com/students.json");
+    return http
+        .post(
+      url,
+      body: json.encode(
+        {
+          "name": name,
+          "position": position,
+          "imageUrl": image,
+          "createdAt": dateTimeNow.toString(),
+        },
       ),
+    )
+      .then(
+      (response) {
+        _allStudent.add(
+          Student(
+            id: json.decode(response.body)["name"].toString(),
+            name: name,
+            position: position,
+            imageUrl: image,
+            createdAt: dateTimeNow,
+          ),
+        );
+        notifyListeners();
+      },
     );
-    notifyListeners();
   }
 
   void editStudent(String id, String name, String position, String image,
@@ -33,13 +55,13 @@ class Students with ChangeNotifier {
     selectStudent.name = name;
     selectStudent.position = position;
     selectStudent.imageUrl = image;
-  
+
     notifyListeners();
   }
 
   void deleteStudent(String id, BuildContext context) {
     _allStudent.removeWhere((element) => element.id == id);
-   
+
     notifyListeners();
   }
 }

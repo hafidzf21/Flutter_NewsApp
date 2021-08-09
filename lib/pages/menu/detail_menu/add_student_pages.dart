@@ -13,21 +13,31 @@ class AddStudent extends StatelessWidget {
   Widget build(BuildContext context) {
     final students = Provider.of<Students>(context, listen: false);
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         centerTitle: true,
         title: Text("Add Student"),
         actions: [
           IconButton(
-            icon: Icon(Icons.save), 
+            icon: Icon(Icons.save),
             onPressed: () {
-              students.addStudent(
+              students
+                  .addStudent(
                 nameController.text,
                 positionController.text,
                 imageController.text,
-                context,
+              )
+                  .then(
+                (response) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text("Berhasil ditambahkan"),
+                      duration: Duration(seconds: 2),
+                    ),
+                  );
+                  Navigator.pop(context);
+                },
               );
-              Navigator.pop(context);
             },
           ),
         ],
@@ -56,13 +66,23 @@ class AddStudent extends StatelessWidget {
                 textInputAction: TextInputAction.done,
                 controller: imageController,
                 onEditingComplete: () {
-                  students.addStudent(
+                  students
+                      .addStudent(
                     nameController.text,
                     positionController.text,
                     imageController.text,
-                    context,
+                  )
+                      .then(
+                    (response) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text("Berhasil ditambahkan"),
+                          duration: Duration(seconds: 2),
+                        ),
+                      );
+                      Navigator.pop(context);
+                    },
                   );
-                  Navigator.pop(context);
                 },
               ),
               SizedBox(height: 50),
@@ -71,13 +91,23 @@ class AddStudent extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 child: OutlinedButton(
                   onPressed: () {
-                    students.addStudent(
+                    students
+                        .addStudent(
                       nameController.text,
                       positionController.text,
                       imageController.text,
-                      context,
+                    )
+                        .then(
+                      (response) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text("Berhasil ditambahkan"),
+                            duration: Duration(seconds: 2),
+                          ),
+                        );
+                        Navigator.pop(context);
+                      },
                     );
-                    Navigator.pop(context);
                   },
                   child: Text(
                     "Submit",

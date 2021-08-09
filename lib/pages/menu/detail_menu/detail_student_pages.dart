@@ -11,12 +11,13 @@ class DetailStudent extends StatelessWidget {
     final students = Provider.of<Students>(context, listen: false);
     final studentId = ModalRoute.of(context).settings.arguments as String;
     final selectStudent = students.selectById(studentId);
+    
     final TextEditingController imageController = TextEditingController(text: selectStudent.imageUrl);
     final TextEditingController nameController = TextEditingController(text: selectStudent.name);
     final TextEditingController positionController = TextEditingController(text: selectStudent.position);
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
-      appBar: AppBar(
+        resizeToAvoidBottomInset: false,
+        appBar: AppBar(
         centerTitle: true,
         title: Text("Detail Student"),
       ),
