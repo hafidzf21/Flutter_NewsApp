@@ -14,8 +14,7 @@ class Students with ChangeNotifier {
   Student selectById(String id) =>
       _allStudent.firstWhere((element) => element.id == id);
 
-  Future <void> addStudent(
-      String name, String position, String image) {
+  Future<void> addStudent(String name, String position, String image) {
     DateTime dateTimeNow = DateTime.now();
 
     Uri url = Uri.parse(
@@ -32,7 +31,7 @@ class Students with ChangeNotifier {
         },
       ),
     )
-      .then(
+        .then(
       (response) {
         _allStudent.add(
           Student(
@@ -59,9 +58,15 @@ class Students with ChangeNotifier {
     notifyListeners();
   }
 
-  void deleteStudent(String id, BuildContext context) {
-    _allStudent.removeWhere((element) => element.id == id);
+  Future<void> deleteStudent(String id) {
+    Uri url = Uri.parse(
+        "https://http-req-flutter-default-rtdb.firebaseio.com/students/$id.json");
 
-    notifyListeners();
+    return http.delete(url).then(
+      (response) {
+        _allStudent.removeWhere((element) => element.id == id);
+        notifyListeners();
+      },
+    );
   }
 }
