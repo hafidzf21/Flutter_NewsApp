@@ -15,25 +15,25 @@ class Students with ChangeNotifier {
   Student selectById(String id) =>
       _allStudent.firstWhere((element) => element.id == id);
 
-  Future<void> addStudent(String name, String position, String image) {
+  addStudent(String name, String position, String image) async {
     DateTime dateTimeNow = DateTime.now();
 
     Uri url = Uri.parse(
         "https://http-req-flutter-default-rtdb.firebaseio.com/students.json");
-    return http
-        .post(
-      url,
-      body: json.encode(
-        {
-          "name": name,
-          "position": position,
-          "imageUrl": image,
-          "createdAt": dateTimeNow.toString(),
-        },
-      ),
-    )
-        .then(
-      (response) {
+
+    try {
+      final response = await http.post(
+        url,
+        body: json.encode(
+          {
+            "name": name,
+            "position": position,
+            "imageUrl": image,
+            "createdAt": dateTimeNow.toString(),
+          },
+        ),
+      );
+      if (response.statusCode >= 200 && response.statusCode < 300) {
         _allStudent.add(
           Student(
             id: json.decode(response.body)["name"].toString(),
@@ -44,51 +44,65 @@ class Students with ChangeNotifier {
           ),
         );
         notifyListeners();
-      },
-    );
+      } else {
+        throw ("${response.statusCode}");
+      }
+    } catch (error) {
+      throw (error);
+    }
   }
 
-  Future<void> editStudent(
-      String id, String name, String position, String image) {
+  editStudent(String id, String name, String position, String image) async {
     Uri url = Uri.parse(
         "https://http-req-flutter-default-rtdb.firebaseio.com/students/$id.json");
-    return http
-        .patch(
-      // Jika menggunakan PUT maka data akan di replace dan createAt akan hilang didalam database
-      url,
-      body: json.encode(
-        {
-          "name": name,
-          "position": position,
-          "imageUrl": image,
-        },
-      ),
-    )
-        .then(
-      (response) {
+
+    try {
+      final response = await http.patch(
+        // Jika menggunakan PUT maka data akan di replace dan createAt akan hilang didalam database
+        url,
+        body: json.encode(
+          {
+            "name": name,
+            "position": position,
+            "imageUrl": image,
+          },
+        ),
+      );
+      if (response.statusCode >= 200 && response.statusCode < 300) {
         Student selectStudent =
-            _allStudent.firstWhere((element) => element.id == id);
+          _allStudent.firstWhere((element) => element.id == id);
         selectStudent.name = name;
         selectStudent.position = position;
         selectStudent.imageUrl = image;
         notifyListeners();
-      },
-    );
+      } else {
+        throw ("${response.statusCode}");
+      }
+    } catch (error) {
+      throw (error);
+    }
   }
 
-  Future<void> deleteStudent(String id) {
+  deleteStudent(String id) async{
     Uri url = Uri.parse(
         "https://http-req-flutter-default-rtdb.firebaseio.com/students/$id.json");
 
-    return http.delete(url).then(
+    try {
+      final response = await http.delete(url).then(
       (response) {
         _allStudent.removeWhere((element) => element.id == id);
         notifyListeners();
       },
     );
+      if (response.statusCode < 200 && response.statusCode >= 300) {
+        throw ("${response.statusCode}");
+      } 
+    } catch (error) {
+      throw (error);
+    }    
   }
 
-  Future <void> initialData() async {
+  Future<void> initialData() async {
     Uri url = Uri.parse(
         "https://http-req-flutter-default-rtdb.firebaseio.com/students.json");
 
@@ -96,22 +110,23 @@ class Students with ChangeNotifier {
 
     var dataResponse = json.decode(getData.body) as Map<String, dynamic>;
 
-    dataResponse.forEach(
-      (key, value) {
-        DateTime dateTimeParse =
-            DateFormat("yyyy-mm-dd hh:mm:ss").parse(value["createdAt"]);
-        _allStudent.add(
-          Student(
-            id: key,
-            createdAt: dateTimeParse,
-            imageUrl: value["imageUrl"],
-            name: value["name"],
-            position: value["position"],
-          ),
-        );
-      },
-    );
-    
-    notifyListeners();
+    if (dataResponse != null) {
+      dataResponse.forEach(
+        (key, value) {
+          DateTime dateTimeParse =
+              DateFormat("yyyy-mm-dd hh:mm:ss").parse(value["createdAt"]);
+          _allStudent.add(
+            Student(
+              id: key,
+              createdAt: dateTimeParse,
+              imageUrl: value["imageUrl"],
+              name: value["name"],
+              position: value["position"],
+            ),
+          );
+        },
+      );
+      notifyListeners();
+    }
   }
 }

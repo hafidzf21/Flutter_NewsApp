@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -30,15 +31,19 @@ class DetailStudent extends StatelessWidget {
           child: Column(
             children: [
               ClipRRect(
-                borderRadius: BorderRadius.circular(100),
+                borderRadius: BorderRadius.circular(150),
                 child: Container(
                   width: 150,
                   height: 150,
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage(imageController.text),
+                  child: CachedNetworkImage(
+                    fit: BoxFit.cover,
+                    imageUrl: imageController.text,
+                    placeholder: (context, url) => CircularProgressIndicator(),
+                    errorWidget: (context, url, error) => Container(
+                      width: 50,
+                      height: 50,
+                      child: Image.network(
+                          "https://www.joyonlineschool.com/static/emptyuserphoto.png"),
                     ),
                   ),
                 ),

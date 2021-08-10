@@ -12,6 +12,42 @@ class AddStudent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final students = Provider.of<Students>(context, listen: false);
+    final Function addStudent = () {
+      students
+          .addStudent(
+        nameController.text,
+        positionController.text,
+        imageController.text,
+      )
+          .then(
+        (response) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text("Berhasil ditambahkan"),
+              duration: Duration(seconds: 2),
+            ),
+          );
+          Navigator.pop(context);
+        },
+      ).catchError(
+        (error) => showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text("Terjadi Error $error!"),
+            content: Text("Tidak dapat menambahkan data siswa"),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text("Okey"),
+              ),
+            ],
+          ),
+        ),
+      );
+    };
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -20,25 +56,7 @@ class AddStudent extends StatelessWidget {
         actions: [
           IconButton(
             icon: Icon(Icons.save),
-            onPressed: () {
-              students
-                  .addStudent(
-                nameController.text,
-                positionController.text,
-                imageController.text,
-              )
-                  .then(
-                (response) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text("Berhasil ditambahkan"),
-                      duration: Duration(seconds: 2),
-                    ),
-                  );
-                  Navigator.pop(context);
-                },
-              );
-            },
+            onPressed: addStudent,
           ),
         ],
       ),
@@ -65,50 +83,14 @@ class AddStudent extends StatelessWidget {
                 decoration: InputDecoration(labelText: "Image URL"),
                 textInputAction: TextInputAction.done,
                 controller: imageController,
-                onEditingComplete: () {
-                  students
-                      .addStudent(
-                    nameController.text,
-                    positionController.text,
-                    imageController.text,
-                  )
-                      .then(
-                    (response) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text("Berhasil ditambahkan"),
-                          duration: Duration(seconds: 2),
-                        ),
-                      );
-                      Navigator.pop(context);
-                    },
-                  );
-                },
+                onEditingComplete: addStudent,
               ),
               SizedBox(height: 50),
               Container(
                 width: double.infinity,
                 alignment: Alignment.centerRight,
                 child: OutlinedButton(
-                  onPressed: () {
-                    students
-                        .addStudent(
-                      nameController.text,
-                      positionController.text,
-                      imageController.text,
-                    )
-                        .then(
-                      (response) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text("Berhasil ditambahkan"),
-                            duration: Duration(seconds: 2),
-                          ),
-                        );
-                        Navigator.pop(context);
-                      },
-                    );
-                  },
+                  onPressed: addStudent,
                   child: Text(
                     "Submit",
                     style: TextStyle(
