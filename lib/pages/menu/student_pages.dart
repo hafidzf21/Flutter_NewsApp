@@ -14,24 +14,24 @@ class StudentPage extends StatefulWidget {
 
 class _StudentPageState extends State<StudentPage> {
   // Cara 1
-  bool isInit = true;
-  @override
-  void didChangeDependencies() {
-    if (isInit) {
-      Provider.of<Students>(context).initialData();
-    }
-    isInit = false;
-    super.didChangeDependencies();
-  }
+  // bool isInit = true;
+  // @override
+  // void didChangeDependencies() {
+  //   if (isInit) {
+  //     Provider.of<Students>(context).initialData();
+  //   }
+  //   isInit = false;
+  //   super.didChangeDependencies();
+  // }
 
   // Cara 2
-  // @override
-  // void initState() {
-  // Future.delayed(Duration.zero).then((value) {
-  //   Provider.of<Students>(context, listen: false).initialData();
-  // });
-  // super.initState();
-  // }
+  @override
+  void initState() {
+  Future.delayed(Duration.zero).then((value) {
+    Provider.of<Students>(context, listen: false).initialData();
+  });
+  super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
