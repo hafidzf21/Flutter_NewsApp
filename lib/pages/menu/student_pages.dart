@@ -11,6 +11,7 @@ class StudentPage extends StatefulWidget {
   @override
   _StudentPageState createState() => _StudentPageState();
 }
+
 class _StudentPageState extends State<StudentPage> {
   // Cara 1
   bool isInit = true;
@@ -25,7 +26,7 @@ class _StudentPageState extends State<StudentPage> {
 
   // Cara 2
   // @override
-  // void initState() { 
+  // void initState() {
   // Future.delayed(Duration.zero).then((value) {
   //   Provider.of<Students>(context, listen: false).initialData();
   // });
