@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx/pages/hitungPerubahan_pages.dart';
+import './routes/page_route.dart';
 import 'package:get/get.dart';
 
 import './controllers/counter_controller.dart';
-import './pages/counter_page.dart';
+
+import 'package:flutter_getx/pages/homepage.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -14,10 +16,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(
-      () => MaterialApp(
+      () => GetMaterialApp(
         debugShowCheckedModeBanner: false,
         theme: counterC.isDark.value ? ThemeData.dark() : ThemeData.light(),
-        home: HitungPerubahan(),
+        home: HomePage(),
+        getPages: RoutePage.pages,
       ),
     );
   }
