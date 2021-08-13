@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
         theme: counterC.isDark.value ? ThemeData.dark() : ThemeData.light(),
         home: HomePage(),
         getPages: RoutePage.pages,
+        
       ),
     );
   }

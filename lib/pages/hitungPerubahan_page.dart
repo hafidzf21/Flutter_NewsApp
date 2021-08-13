@@ -12,8 +12,15 @@ class HitungPerubahan extends StatelessWidget {
         title: Text("Hitung Perubahan"),
         actions: [
           IconButton(
-            onPressed: ()=> hitungC.reset(),
-            icon: Icon(Icons.refresh),
+            onPressed: () => {
+              hitungC.reset(),
+              Get.snackbar(
+                "Halaman direset",
+                "Perubahan data berhasil direset",
+                icon: Icon(Icons.restart_alt),
+              ),
+            },
+            icon: Icon(Icons.restart_alt),
           ),
         ],
       ),
