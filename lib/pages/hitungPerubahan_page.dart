@@ -13,11 +13,24 @@ class HitungPerubahan extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () => {
-              hitungC.reset(),
-              Get.snackbar(
-                "Halaman direset",
-                "Perubahan data berhasil direset",
-                icon: Icon(Icons.restart_alt),
+              Get.defaultDialog(
+                barrierDismissible: false,
+                title: "Halaman direset",
+                middleText: "Perubahan data akan dihapus",
+
+                // Default GetX Dialog
+                textConfirm: "Okee",
+                confirmTextColor: Colors.white,
+                onConfirm: () {
+                  hitungC.reset();
+                  Get.back();
+                  Get.to(() => HitungPerubahan());
+                },
+
+                textCancel: "Batal",
+                onCancel: () {
+                  HitungPerubahan();
+                },
               ),
             },
             icon: Icon(Icons.restart_alt),
