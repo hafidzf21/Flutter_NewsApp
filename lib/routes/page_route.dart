@@ -1,8 +1,9 @@
-import 'package:flutter_getx/pages/count_page.dart';
+import 'package:flutter_getx/pages/menu/count_page.dart';
+import 'package:flutter_getx/pages/menu/shop/shop.dart';
 import 'package:get/get.dart';
 
-import 'package:flutter_getx/pages/counter_page.dart';
-import 'package:flutter_getx/pages/hitungPerubahan_page.dart';
+import 'package:flutter_getx/pages/menu/counter_page.dart';
+import 'package:flutter_getx/pages/menu/hitungPerubahan_page.dart';
 import 'package:flutter_getx/pages/homepage.dart';
 import 'package:flutter_getx/routes/route_name.dart';
 
@@ -23,6 +24,10 @@ class RoutePage {
     GetPage(
       name: RouteName.count_page,
       page: () => CountPage(),
+    ),
+    GetPage(
+      name: RouteName.shop_page,
+      page: () => ShopPage(),
     ),
   ];
 }

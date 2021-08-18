@@ -34,7 +34,14 @@ class HomePage extends StatelessWidget {
                 Get.toNamed(RouteName.count_page);
               },
               title: Text('Count App'),
-              leading: Icon(Icons.iso),
+              leading: Icon(Icons.visibility),
+            ),
+            ListTile(
+              onTap: () {
+                Get.toNamed(RouteName.shop_page);
+              },
+              title: Text('Count App'),
+              leading: Icon(Icons.add_shopping_cart),
             ),
             Divider(),
             Padding(
