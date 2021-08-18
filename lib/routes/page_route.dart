@@ -1,3 +1,4 @@
+import 'package:flutter_getx/pages/count_page.dart';
 import 'package:get/get.dart';
 
 import 'package:flutter_getx/pages/counter_page.dart';
@@ -18,6 +19,10 @@ class RoutePage {
     GetPage(
       name: RouteName.hitung_page,
       page: () => HitungPerubahan(),
+    ),
+    GetPage(
+      name: RouteName.count_page,
+      page: () => CountPage(),
     ),
   ];
 }

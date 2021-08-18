@@ -23,11 +23,19 @@ class HomePage extends StatelessWidget {
               leading: Icon(Icons.dashboard),
             ),
             ListTile(
-                onTap: () {
-                  Get.toNamed(RouteName.counter_page);
-                },
-                title: Text('Counter App'),
-                leading: Icon(Icons.exposure)),
+              onTap: () {
+                Get.toNamed(RouteName.counter_page);
+              },
+              title: Text('Counter App'),
+              leading: Icon(Icons.exposure),
+            ),
+            ListTile(
+              onTap: () {
+                Get.toNamed(RouteName.count_page);
+              },
+              title: Text('Count App'),
+              leading: Icon(Icons.iso),
+            ),
             Divider(),
             Padding(
               padding: const EdgeInsets.only(left: 15.0, bottom: 10),
@@ -88,7 +96,6 @@ class HomePage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(20.0),
                               ),
                             ),
-                            
                           ),
                           SizedBox(height: 20),
                           ElevatedButton(
